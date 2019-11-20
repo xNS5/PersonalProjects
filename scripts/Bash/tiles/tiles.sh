@@ -6,17 +6,26 @@ echo "Beginning QuickTile Initialization"
 # My path for my alias is ~/Github/CS/scripts/tiles/tiles.sh
 
 
-path="$(dirname "$(which "$0")")"
+path="$(dirname "$(mdfind "$0")")"
 tiles=`cat $path/tiles.txt`
+
+echo "$path"
 
 
 function getLines(){
   return `adb devices | wc -l`;
 }
 
-if [ "$1" == "-h" ]; then
+if [ "$1" == "help" ]; then
  echo "Usage: ./tiles [-h help]"
  echo "Simply run the shell program and it will handle the rest"
+fi
+
+
+if [ "$1" == "update" ]; then
+   echo "Updating tile layout"
+   adb shell "settings get secure sysui_qs_tiles" > $path/tiles.txt
+   echo "Completed. Exiting..."
 fi
 
 
