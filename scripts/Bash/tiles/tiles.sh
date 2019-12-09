@@ -16,16 +16,18 @@ function getLines(){
   return `adb devices | wc -l`;
 }
 
-if [ "$1" == "help" ]; then
+if [ "$1" == "-h" ]; then
  echo "Usage: ./tiles [-h help]"
  echo "Simply run the shell program and it will handle the rest"
+ return
 fi
 
 
-if [ "$1" == "update" ]; then
+if [ "$1" == "-u" ]; then
    echo "Updating tile layout"
    adb shell "settings get secure sysui_qs_tiles" > $path/tiles.txt
    echo "Completed. Exiting..."
+   return
 fi
 
 
