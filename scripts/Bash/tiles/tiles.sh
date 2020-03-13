@@ -5,9 +5,7 @@ echo "Beginning QuickTile Initialization"
 # Adding the quicktiles in with "" on the ends of the string will result in an error
 # My path for my alias is ~/Github/CS/scripts/tiles/tiles.sh
 
-
-path="$(dirname "$(mdfind "$0")")"
-tiles=`cat $path/tiles.txt`
+tiles=`cat $(dirname "$0")/tiles.txt`
 
 echo "$path"
 
@@ -36,11 +34,11 @@ if [ ${#tiles} -eq 0 ]; then
    read -p "Do you want to create the file? (Y || N) " ans
    shopt -s nocasematch
    getLines
-	if [$ans -eq "Y"] && [ $?-eq 3 ]; then
+	if [ $ans -eq "Y" ] && [ $?-eq 3 ]; then
          adb shell "settings get secure sysui_qs_tiles" > $path/tiles.txt
          echo "Created text file. Please re-start this program to load quicktiles"
          exit 0
-	elif [$ans -eq "N"] || [ $ans -eq "Y"] && [ $? -ne 3]; then
+	elif [ $ans -eq "N" ] || [ $ans -eq "Y" ] && [ $? -ne 3]; then
 	echo "Device is not connected"
        exit 0
    fi
@@ -69,4 +67,3 @@ done
 adb shell "settings put secure sysui_qs_tiles \"$tiles\""
 
 echo "Completed. Exiting..."
-exit 0
