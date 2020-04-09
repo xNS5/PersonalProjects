@@ -15,6 +15,7 @@ if [ ! \( -d br_config \) ];
   then
     mkdir br_config && cd br_config || return
     touch filter.txt init.txt && cd ..
+    echo "Created the Jar and config files"
+  else
+    echo "Created the Jar file"
 fi
-
-echo "Created the Jar and config files"

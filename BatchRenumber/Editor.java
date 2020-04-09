@@ -6,14 +6,15 @@ import java.util.stream.Collectors;
 
 
 class Editor extends JFrame {
-    private static String dir = "br_config/filter.txt";
+    private static String dir = "./br_config/";
     private static JTextArea jt;
     private static Container mainFrame;
 
-    Editor() {
+    Editor()
+    {
         try {
             //File, Scanner and a StringBuilder
-           File filter_file = new File(dir);
+            File filter_file = new File(dir);
             Scanner sc = new Scanner(filter_file);
             StringBuilder sb = new StringBuilder();
 
