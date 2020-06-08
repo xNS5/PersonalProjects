@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 
 class Editor extends JFrame {
